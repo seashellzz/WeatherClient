@@ -22,12 +22,12 @@ export class CountryCitiesComponent {
   constructor(private http: HttpClient, private activatedRoute: ActivatedRoute) {
     this.id = -1;
   }
-
-  ngOnInit() {
+                             
+  ngOnInit() :void{
     this.getCities();
   }
 
-  getCountries() {
+  getCities() {
     let idparameter = this.activatedRoute.snapshot.paramMap.get("id");
     this.id = idparameter ? +idparameter : -1;
     this.http.get<City[]>(`${environment.baseUrl}` + `api/countries/countryCities/${this.id}`).subscribe(
@@ -38,5 +38,5 @@ export class CountryCitiesComponent {
       
     );
   }
-  
+  title = "CityClient";
 }
